@@ -13,6 +13,7 @@
 // Defines the dialog ID
 #define DIALOG_WHITELIST    555  
 
+
 // Function to check if a player is whitelisted
 bool:IsPlayerWhitelisted(const name[])
 {
@@ -38,6 +39,7 @@ bool:IsPlayerWhitelisted(const name[])
 
     return false;                         
 }
+
 
 // Function to whitelist a player
 bool:WhitelistPlayer(const name[])
@@ -69,6 +71,7 @@ bool:WhitelistPlayer(const name[])
     return false;                        
 }
 
+
 public OnFilterScriptInit()
 {
 
@@ -86,6 +89,7 @@ public OnFilterScriptInit()
     return true;                              
 }
 
+
 public OnFilterScriptExit()            
 {
 
@@ -102,6 +106,7 @@ public OnFilterScriptExit()
 
     return true;                              
 }
+
 
 public OnPlayerConnect(playerid)
 {
@@ -130,7 +135,8 @@ public OnPlayerConnect(playerid)
     return true;                            
 }
 
-public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])  // Called when a dialog response is received
+
+public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
     if(!response) return true;
 
@@ -162,6 +168,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])  //
     return true;                            
 }
 
+
+// Command /whitelist
 CMD:whitelist(playerid, params[])
 {
 
