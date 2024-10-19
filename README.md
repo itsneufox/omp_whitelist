@@ -25,6 +25,9 @@ public OnPlayerConnect(playerid)
         Kick(playerid);
         return false;
     }
+
+    //rest of the code
+
     return true;
 }
 ```
