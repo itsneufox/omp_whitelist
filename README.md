@@ -36,8 +36,8 @@ public OnPlayerConnect(playerid)
 The `whitelist.txt` should contain one player name per line:
 ```
 Player_Name
-Bad_Player
-Cool_Player
+BadPlayer
+Cool.Player
 ```
 
 ## Functions
