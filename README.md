@@ -1,5 +1,5 @@
 # omp_whitelist
-**omp_whitelist** is an include for **open.mp** that provides simple and efficient player whitelisting functionality. This include allows server developers to easily implement whitelist verification in their gamemodes by checking player names against a text file.
+**omp_whitelist** is a simple include for **open.mp** that provides simple and efficient player whitelisting functionality. This include allows server developers to easily implement whitelist verification in their gamemodes by checking player names against a text file.
 
 ## Features
 - **Simple Whitelist System**: Verifies players against a whitelist file. ✅
