@@ -9,7 +9,7 @@
 ## Installation
 1. Download `omp_whitelist.inc`
 2. Place it in your includes folder
-3. Create an empty `whitelist.txt` file in your server's root directory
+3. Create an empty `whitelist.txt` file in your server's `scriptfiles` folder
 4. Include the file in your script:
 ```pawn
 #include <omp_whitelist>
