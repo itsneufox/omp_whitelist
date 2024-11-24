@@ -1,64 +1,112 @@
-# omp_whitelist
-**omp_whitelist** is a simple include for **open.mp** that provides simple and efficient player whitelisting functionality. This include allows server developers to easily implement whitelist verification in their gamemodes by checking player names against a text file.
+# omp_allow
 
-## Features
-- **Simple Whitelist System**: Verifies players against a whitelist file. ✅
-- **File-Based Storage**: Uses a simple text file system for storing whitelisted players. 📜
-- **Easy Integration**: Simple to implement in any gamemode. 🛠️
+**omp_allow** is a simple include for **open.mp** that provides basic and efficient player allowlist functionality. 
+This include enables server developers to implement a simple player verification system in their gamemodes.
 
 ## Installation
-1. Download `omp_whitelist.inc`
-2. Place it in your includes folder
-3. Create an empty `whitelist.txt` file in your server's `scriptfiles` folder
-4. Include the file in your script:
+
+1. Download `omp_allow.inc`.
+2. Place it in your includes folder.
+3. Include the file in your script:
+
 ```pawn
-#include <omp_whitelist>
+#include <omp_allow>
 ```
 
-## Usage
-### Basic Implementation
+## Functions
+
+### IsPlayerAllowed
 ```pawn
+bool:IsPlayerAllowed(playerid)
+```
+Returns `true` if the player is allowed, `false` otherwise. Automatically checks if the player is connected.
+
+### AllowPlayer
+```pawn
+AllowPlayer(const szName[])
+```
+Adds a single player to the allowlist. Returns `true` if successful.
+
+### AllowPlayers
+```pawn
+AllowPlayers(const names[][], size = sizeof(names))
+```
+Helper function to add multiple player names at once. Returns `true` when completed.
+
+## Examples
+
+### Using the Function
+
+```pawn
+public OnGameModeInit()
+{
+    AllowPlayer("Happy_Macaco");
+    AllowPlayer("Angry_Macaco");
+
+    return true;
+}
+
 public OnPlayerConnect(playerid)
 {
-    if (!IsPlayerWhitelisted(playerid))
+    if (!IsPlayerAllowed(playerid))
     {
         Kick(playerid);
         return false;
     }
 
-    //rest of the code
+    // rest of the code
 
     return true;
 }
 ```
 
-### Whitelist File Format
-The `whitelist.txt` should contain one player name per line:
-```
-Player_Name
-BadPlayer
-Cool.Player
-```
+### Using an Array
 
-## Functions
-### IsPlayerWhitelisted
 ```pawn
-bool:IsPlayerWhitelisted(playerid)
-```
-Returns `true` if the player is whitelisted, `false` otherwise.
+public OnGameModeInit()
+{
+    // Array of allowed players
+    new const ALLOWED_PLAYERS[][] = {
+        "Happy_Macaco",
+        "Angry_Macaco",
+        "Sad_Macaco",
+        "Excited_Macaco",
+        "Relaxed_Macaco",
+        "Bored_Macaco"
+    };
+    
+    // Add all players to the allowlist
+    AllowPlayers(ALLOWED_PLAYERS);
 
-## Configuration
-You can change the whitelist file location by defining `WHITELIST_FILE` before including the file:
-```pawn
-#define WHITELIST_FILE "custom_whitelist.txt"
-#include <omp_whitelist>
+    return true;
+}
+
+public OnPlayerConnect(playerid)
+{
+    if (!IsPlayerAllowed(playerid))
+    {
+        Kick(playerid);
+        return false;
+    }
+
+    // rest of the code
+
+    return true;
+}
 ```
 
 ## License
+
 This project is licensed under the Mozilla Public License 2.0 (MPL 2.0). See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
+
 Contributions are welcome! If you have suggestions for improvements or new features, feel free to create a pull request or open an issue. 🤝
+
+## Credits
+
+Created by [itsneufox](https://github.com/itsneufox)
+
 
 ## Acknowledgments
 - [Dobby](https://github.com/DobbysGamertag) - For providing the idea.
