@@ -44,7 +44,6 @@ stock AllowPlayer(const szName[])
     return 1;
 }
 
-// New helper function to add an array of names
 stock AllowPlayers(const names[][], size = sizeof(names))
 {
     for(new i = 0; i < size; i++)
